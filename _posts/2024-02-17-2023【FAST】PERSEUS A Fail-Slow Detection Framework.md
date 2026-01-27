@@ -18,23 +18,23 @@ tags:
 
 What is Fail-Slow？——Still functioning bug with **lower-than-expected** performance **设备可用但是远低于预期的性能**
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fbee18a97-053f-410a-9391-179a6af3241a%2FUntitled.png?table=block&id=6e8df1d1-dd8b-4616-9662-6cce6ead5e05&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fbee18a97-053f-410a-9391-179a6af3241a%2FUntitled.png?table=block&id=6e8df1d1-dd8b-4616-9662-6cce6ead5e05&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 以SSD为例，SSD有读写寿命，但当一块SSD盘完全不能用之前，往往会有一个中间状态（Fail-Slow），处于Fail-Slow状态的盘，会发现读写都能正常进行，但其latency p99或p999会比其他新盘慢很多倍。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F614033c8-5e6e-4d3f-a8b8-e2766ac6e760%2FUntitled.png?table=block&id=9b8b537e-99a4-482f-924e-fc0c70fea6e4&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F614033c8-5e6e-4d3f-a8b8-e2766ac6e760%2FUntitled.png?table=block&id=9b8b537e-99a4-482f-924e-fc0c70fea6e4&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 Fail-slow 会对系统造成比较大的负面影响：
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F7e752eb2-480f-445c-830f-0468705fd1e8%2FUntitled.png?table=block&id=e15d8335-cc36-4cb2-9b60-9f01250adfa1&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1250&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F7e752eb2-480f-445c-830f-0468705fd1e8%2FUntitled.png?table=block&id=e15d8335-cc36-4cb2-9b60-9f01250adfa1&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1250&userId=&cache=v2)
 
 当我们把 fail-slow 设备移除后，可以看到写入长尾有明显的改善：
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fbb898eec-eb7e-4d78-875a-714a650d2e1d%2FUntitled.png?table=block&id=3c7d26a5-1c35-4357-af38-93e6e7bd40cf&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fbb898eec-eb7e-4d78-875a-714a650d2e1d%2FUntitled.png?table=block&id=3c7d26a5-1c35-4357-af38-93e6e7bd40cf&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 ## 本文的贡献
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F8b6c6566-b5ee-482e-8e18-6a78ca37e030%2FUntitled.png?table=block&id=8251f925-8686-4610-8622-a6f794623c12&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F8b6c6566-b5ee-482e-8e18-6a78ca37e030%2FUntitled.png?table=block&id=8251f925-8686-4610-8622-a6f794623c12&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 - 我们分享了在大规模数据中心中检测故障缓慢失败的三次不成功尝试的经验教训。
 - 我们提出了PERSEUS的设计，这是一个**非侵入式**、**细粒度**且**通用**的 fail-slow 检测框架。
@@ -55,7 +55,7 @@ Fail-slow 会对系统造成比较大的负面影响：
 - 方法：可以通过SLOs设置设备时延阈值来识别fail-slow设备。为避免SSD内部GC引起误判，同样设置了最小slowdown范围。
 - 限制：这种方法易受到workloads影响，精确度比较低。以块存储服务中NVME的吞吐为例，写时延会因为workload burst超过阈值导致误判。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F9db9ad33-2023-4f01-97e5-247e8ea41c73%2FUntitled.png?table=block&id=deb43064-ec33-4bd5-8209-b565a56cb48d&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=990&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F9db9ad33-2023-4f01-97e5-247e8ea41c73%2FUntitled.png?table=block&id=deb43064-ec33-4bd5-8209-b565a56cb48d&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=990&userId=&cache=v2)
 
 ## Attempt 2：Peer Evaluation
 
@@ -63,7 +63,7 @@ Fail-slow 会对系统造成比较大的负面影响：
     - 每隔15s计算节点内各设备的中间值时延
     - 查看是否有设备在一个时间窗内(5min)连续出现异常性能——超过50%的时间其时延超过中间值的2倍。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F0bec7839-79ce-4c73-8518-9609b6bca381%2FUntitled.png?table=block&id=29144fb5-3e8e-4172-af31-0677583081e1&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=960&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F0bec7839-79ce-4c73-8518-9609b6bca381%2FUntitled.png?table=block&id=29144fb5-3e8e-4172-af31-0677583081e1&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=960&userId=&cache=v2)
 
 - 限制：对于不同类型的设备需要评估不同的参数，可拓展性差。
 
@@ -80,13 +80,13 @@ Fail-slow 会对系统造成比较大的负面影响：
 
 通过 throughput 或IOPS。通过[SRCC](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient)的方法，将每个设备的latency与throughput/IOPS相关联。SRCC越高，则关联性越强。从下图可以看出latency与throughput的关联更高。因此我们决定使用throughput来对workload压力建模。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F1ef64028-73d7-49d5-8a18-2e18f805728f%2FUntitled.png?table=block&id=6775d7dc-0065-4cc9-8f3a-f66ec1b53571&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=940&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F1ef64028-73d7-49d5-8a18-2e18f805728f%2FUntitled.png?table=block&id=6775d7dc-0065-4cc9-8f3a-f66ec1b53571&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=940&userId=&cache=v2)
 
 3.How to automatically derive adaptive thresholds？
 
 通过多项式回归模型构建latency-vs-throughput分布，下图展示了latency-vs-throughput(LvT)在不同情况的分布
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fc0e4ce9b-dbf3-4750-a513-3ba2bcc470b8%2FUntitled.png?table=block&id=8945c1e9-67a1-4562-8cf7-b4ade4118b64&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fc0e4ce9b-dbf3-4750-a513-3ba2bcc470b8%2FUntitled.png?table=block&id=8945c1e9-67a1-4562-8cf7-b4ade4118b64&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 - Service-wise（三个集群，数据库服务）
 
@@ -108,7 +108,7 @@ fail-slow不像fail-stop，没有明确的标准，因此检测工具并不是�
 
 # 解决方案
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F30f241c5-f78d-4f79-b329-b701c92ef0b4%2FUntitled.png?table=block&id=9930d2ce-a3f3-45dc-8954-65784b14cf1b&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1960&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F30f241c5-f78d-4f79-b329-b701c92ef0b4%2FUntitled.png?table=block&id=9930d2ce-a3f3-45dc-8954-65784b14cf1b&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1960&userId=&cache=v2)
 
 1. 异常值检测。对于每个节点，PERSEUS首先收集所有条目。然后，我们使用主成分分析（PCA ）和基于密度的带噪声空间聚类（DBSCAN）的组合来识别并丢弃异常条目。
 2. 构建回归模型。基于清理后的数据集（即不包括异常值），PERSEUS执行多项式回归以获得模型，并使用预测上限作为故障缓慢检测阈值。然后，PERSEUS将该模型应用于原始数据集（即包括异常值），以识别超出界限的条目，并标记它们为缓慢条目。
@@ -127,7 +127,7 @@ fail-slow不像fail-stop，没有明确的标准，因此检测工具并不是�
 
 在得到回归模型后，可以通过计算预测上限(upper bound)来识别slow entries并检测fail-slow事件
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F4cc02a65-ed07-431f-a739-4347c6cd7f93%2FUntitled.png?table=block&id=eac7ae3b-3c48-493e-9801-0252ff9dea79&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F4cc02a65-ed07-431f-a739-4347c6cd7f93%2FUntitled.png?table=block&id=eac7ae3b-3c48-493e-9801-0252ff9dea79&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 以下图为例：
 
@@ -137,11 +137,11 @@ fail-slow不像fail-stop，没有明确的标准，因此检测工具并不是�
 - 识别 slow entry：每15s作为1个entry，假设一个设备的latency entries为[15, 20, 25, 10, 5]，相应的upper bound为[5, 5, 5, 5, 5]，则对应Slowdown Ratio(SR)为[3, 4, 5, 2, 1]。Slowdown Ratio (SR) = latency / upper bound.
 - 识别 slow 事件：设定一个滑动窗口，若该范围内一定比例的SR中间值大于阈值，则认定为fail-slow事件。例如滑动窗口大小为1min，比例设置为50%，阈值设置为1。则[3, 4, 5, 2]内超过50%的SR（i.e. 3，4，5，2）中位数为3.5 > 1，认定窗口[3,4,5,2]为fail-slow事件。根据类似的方式，可以判断下一个窗口，是否有发生 fail-slow 事件。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fc1165411-3cf1-41e4-9438-0d724295af3d%2FUntitled.png?table=block&id=1f422ac3-9491-4a50-a444-c75b626a57a7&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=980&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fc1165411-3cf1-41e4-9438-0d724295af3d%2FUntitled.png?table=block&id=1f422ac3-9491-4a50-a444-c75b626a57a7&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=980&userId=&cache=v2)
 
 ## 记分板
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fdde0f839-730e-4fc2-8c38-8e6a868335c0%2FUntitled.png?table=block&id=65744abb-fa2d-47f1-909e-b80ab8cc4ab2&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=940&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fdde0f839-730e-4fc2-8c38-8e6a868335c0%2FUntitled.png?table=block&id=65744abb-fa2d-47f1-909e-b80ab8cc4ab2&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=940&userId=&cache=v2)
 
 每个设备的risk score是通过不同risk level的权重计算得到的：
 
@@ -155,15 +155,15 @@ N(extreme) refers to #days at extreme risk level.
 
 ## Fail-slow Benchmark
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fb538d84d-2f01-4a54-8c9b-8e6075f89df0%2FUntitled.png?table=block&id=4292bc43-39cc-414f-8fec-cfb28cf6af96&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fb538d84d-2f01-4a54-8c9b-8e6075f89df0%2FUntitled.png?table=block&id=4292bc43-39cc-414f-8fec-cfb28cf6af96&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1000&userId=&cache=v2)
 
 PERSEUS在以上fail-slow case中检测出了304个，所有fail-slow设备的根因包括软件bug、硬件影响、环境因素等。
 
 ## 与其它算法对比
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fea53fb5e-ece8-4954-81be-a78ecd482059%2FUntitled.png?table=block&id=3a6f56e7-9ecd-4aa0-9d8d-7e2e6db4132a&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fea53fb5e-ece8-4954-81be-a78ecd482059%2FUntitled.png?table=block&id=3a6f56e7-9ecd-4aa0-9d8d-7e2e6db4132a&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F0d70303e-b84a-4b79-9519-b800ed00184b%2FUntitled.png?table=block&id=8409ff4d-323c-4504-b463-7e40062e7275&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F0d70303e-b84a-4b79-9519-b800ed00184b%2FUntitled.png?table=block&id=8409ff4d-323c-4504-b463-7e40062e7275&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 表5显示了PERSEUS优于以往的所有尝试。高精度和召回率表明，PERSEUS能够成功检测所有的fail-slow驱动器，同时很少将正常驱动错误地标记为fail-slow。因此，我们得出结论，PERSEUS作为一种精细化（每个驱动器）、非侵入性（无代码更改）、通用（相同的参数设置适用于不同的环境）和准确的（高精度和召回率）fail-slow检测框架实现了我们的设计目标。
 
@@ -173,7 +173,7 @@ PERSEUS在以上fail-slow case中检测出了304个，所有fail-slow设备的�
 
 ## Root Cause Analysis
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F4c0ac849-4191-488a-a5da-de5bd49614b9%2FUntitled.png?table=block&id=73919eb6-4102-42cb-9eb2-98264493e574&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F4c0ac849-4191-488a-a5da-de5bd49614b9%2FUntitled.png?table=block&id=73919eb6-4102-42cb-9eb2-98264493e574&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 分析其中315个已确认的 fail-slow 设备，其中252个都是由于受到不合理的调度的影响。
 

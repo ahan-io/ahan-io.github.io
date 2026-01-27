@@ -9,7 +9,7 @@ catalog:      true
 tags:
     - storage dedup compression
 ---
-![image.png](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F53604aeb-ad5f-4dad-9e0b-5d1f68812db8%2Fimage.png?table=block&id=11feda9f-236a-8025-8a04-e2c7bc6aec0b&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1420&userId=&cache=v2)
+![image.png](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F53604aeb-ad5f-4dad-9e0b-5d1f68812db8%2Fimage.png?table=block&id=11feda9f-236a-8025-8a04-e2c7bc6aec0b&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1420&userId=&cache=v2)
 
 结合了两种 data reduce 技术：
 
@@ -26,7 +26,7 @@ tags:
 
 实验结果：
 
-![image.png](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F2f82dff1-81e4-4484-96a6-a3be6661f49c%2Fimage.png?table=block&id=11feda9f-236a-8073-91ad-f1287eea31eb&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1420&userId=&cache=v2)
+![image.png](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F2f82dff1-81e4-4484-96a6-a3be6661f49c%2Fimage.png?table=block&id=11feda9f-236a-8073-91ad-f1287eea31eb&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1420&userId=&cache=v2)
 
 Delta Compression 大概能提升 1.4~3.5 倍的整体压缩率。
 

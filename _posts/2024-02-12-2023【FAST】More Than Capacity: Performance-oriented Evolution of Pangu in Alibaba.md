@@ -14,7 +14,7 @@ paper 总结了**阿里云盘古2.0**的性能优化的演进和方案，对我�
 
 # 背景
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fbcd2547a-4f47-42b3-a25a-bcdb54466b4c%2FUntitled.png?table=block&id=f5385e26-3a9d-4c38-9cec-c709ba79f028&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fbcd2547a-4f47-42b3-a25a-bcdb54466b4c%2FUntitled.png?table=block&id=f5385e26-3a9d-4c38-9cec-c709ba79f028&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 盘古1.0：主要面向容量，以 HDD 为主，基于 ext4文件系统、kernel TCP；
 
@@ -22,7 +22,7 @@ paper 总结了**阿里云盘古2.0**的性能优化的演进和方案，对我�
 
 盘古的架构：
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fcaf404c9-3aa7-49c2-a0c9-9cb604153a7f%2FUntitled.png?table=block&id=e40ad130-171d-4e5f-b3b5-b5c471c62d7a&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fcaf404c9-3aa7-49c2-a0c9-9cb604153a7f%2FUntitled.png?table=block&id=e40ad130-171d-4e5f-b3b5-b5c471c62d7a&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 盘古2.0的核心优化：**Low latency** → **100us**。
 
@@ -34,7 +34,7 @@ paper 总结了**阿里云盘古2.0**的性能优化的演进和方案，对我�
 
 通过自研 user-space storage operating System，做了各项优化，核心是 **bypass 内核**。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F34e19f40-3020-4b43-91e5-1a6ea98d4f0b%2FUntitled.png?table=block&id=5c628f0f-c56a-4767-ae57-98dfd6df298b&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F34e19f40-3020-4b43-91e5-1a6ea98d4f0b%2FUntitled.png?table=block&id=5c628f0f-c56a-4767-ae57-98dfd6df298b&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 降低延迟，4个手段，包括：
 
@@ -45,7 +45,7 @@ paper 总结了**阿里云盘古2.0**的性能优化的演进和方案，对我�
 
 ### 如何在故障场景下尽可能减少长尾延迟
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fd146ed96-5495-4bf3-833f-76bdc81f6ada%2FUntitled.png?table=block&id=743ef927-c3fc-4b72-85b0-5ad7f472f88a&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fd146ed96-5495-4bf3-833f-76bdc81f6ada%2FUntitled.png?table=block&id=743ef927-c3fc-4b72-85b0-5ad7f472f88a&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 故障场景下，盘古仍然保证了P999的延迟可以控制在 ms 级别，因为客户端对于故障场景做了很多特殊处理。总结下来是4个手段：
 
@@ -63,11 +63,11 @@ paper 总结了**阿里云盘古2.0**的性能优化的演进和方案，对我�
 
 通过对 OTS（表格存储）的性能测试，升级到Pangu2.0后，延迟上有数量级的减少。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F4aba4e56-e1ff-4e01-8df1-ece1745fdfc8%2FUntitled.png?table=block&id=63ba8346-8b27-45bc-91e7-3c67f4e6d805&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1800&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F4aba4e56-e1ff-4e01-8df1-ece1745fdfc8%2FUntitled.png?table=block&id=63ba8346-8b27-45bc-91e7-3c67f4e6d805&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1800&userId=&cache=v2)
 
 并且在实际的 EBS 和搜索业务上，P999的控制和平均时延也都表现出色：
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F86292328-0606-41a7-ab76-ddd07b511ea5%2FUntitled.png?table=block&id=ac8e7024-2007-4c02-b4eb-29f6c79e83a4&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1520&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F86292328-0606-41a7-ab76-ddd07b511ea5%2FUntitled.png?table=block&id=ac8e7024-2007-4c02-b4eb-29f6c79e83a4&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1520&userId=&cache=v2)
 
 对EBS 来说，平均时延可以控制在**100us** 以下。
 
@@ -75,11 +75,11 @@ paper 总结了**阿里云盘古2.0**的性能优化的演进和方案，对我�
 
 从2018年开始，盘古逐渐从容量型存储转向性能型存储。盘古做了一系列性能上的优化，包括网络、内存、CPU，以充分压榨物理机的性能。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fe97f4516-d48b-4a15-8ee8-381bba80c44b%2FUntitled.png?table=block&id=3e0111d5-0fd5-4109-a7a7-4dcc7352a46f&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fe97f4516-d48b-4a15-8ee8-381bba80c44b%2FUntitled.png?table=block&id=3e0111d5-0fd5-4109-a7a7-4dcc7352a46f&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 ### 网络优化
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F23e47774-edca-48fb-a777-082d0aedc0ce%2FUntitled.png?table=block&id=d7490e94-eec8-4815-95c2-52666709c912&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F23e47774-edca-48fb-a777-082d0aedc0ce%2FUntitled.png?table=block&id=d7490e94-eec8-4815-95c2-52666709c912&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 网络部分主要有3项优化：
 

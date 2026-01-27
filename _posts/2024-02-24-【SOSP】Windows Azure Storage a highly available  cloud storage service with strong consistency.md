@@ -32,7 +32,7 @@ WAS 的主要特性：
 
 http(s)://**AccountName**.<service>.core.windows.net/**PartitionName**/**ObjectName**
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F1ed27b3d-25a1-49ca-9923-452bdb9d0e49%2FUntitled.png?table=block&id=d70cc856-8046-4f0a-b9dc-bf0dc6eafccf&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F1ed27b3d-25a1-49ca-9923-452bdb9d0e49%2FUntitled.png?table=block&id=d70cc856-8046-4f0a-b9dc-bf0dc6eafccf&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 **AccountName**是客户选择的用于访问存储的帐户名称，它是DNS主机名的一部分。 AccountName的DNS转换用于定位存储数据的主存储集群和数据中心。这个主要位置是所有请求到达该帐户的数据的地方。一个应用程序可以使用多个AccountNames将其数据存储在不同的位置。
 
@@ -48,7 +48,7 @@ http(s)://**AccountName**.<service>.core.windows.net/**PartitionName**/**ObjectN
 
 ## WAS Architectural Components
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe1b4260e-ab6c-44f9-8b8a-8699f10eb9bd%2FUntitled.png?table=block&id=3a268e81-5aa7-4783-b676-69d4b4e994fa&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1110&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe1b4260e-ab6c-44f9-8b8a-8699f10eb9bd%2FUntitled.png?table=block&id=3a268e81-5aa7-4783-b676-69d4b4e994fa&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1110&userId=&cache=v2)
 
 WAS 的架构整体可以分为两大组件：
 
@@ -86,21 +86,21 @@ Stream Layer 本质上就是提供一个个分布式的 append-only 的文件，
 
 阿里在2023 FAST 上发表了《**More Than Capacity: Performance-oriented Evolution of Pangu in Alibaba**》一文，介绍了盘古2.0的架构，更具有现代的参考价值，建议也可以读一下。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F3e886fc1-32d8-47b2-ab42-3f286e7e9c3d%2FUntitled.png?table=block&id=b2ecef95-f0e0-48fa-9549-72e23ef82e3f&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F3e886fc1-32d8-47b2-ab42-3f286e7e9c3d%2FUntitled.png?table=block&id=b2ecef95-f0e0-48fa-9549-72e23ef82e3f&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F9f77530f-8f0f-43e0-9f2a-8a15ad82bb6a%2FUntitled.png?table=block&id=36fdfbd0-9580-4e28-8a38-3bdb47210e5c&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1250&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F9f77530f-8f0f-43e0-9f2a-8a15ad82bb6a%2FUntitled.png?table=block&id=36fdfbd0-9580-4e28-8a38-3bdb47210e5c&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1250&userId=&cache=v2)
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F8d1b1276-9dab-4673-be65-74ffad0b09cb%2FUntitled.png?table=block&id=6a5b797b-dbb2-4b1c-9a34-e5bd793f4b0c&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F8d1b1276-9dab-4673-be65-74ffad0b09cb%2FUntitled.png?table=block&id=6a5b797b-dbb2-4b1c-9a34-e5bd793f4b0c&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 由于 Stream 是以 block 为粒度，append-only 的，因此只有最后一个 Extent 可以被写入，所有被 sealed 的 extent，长度都不再改变。
 
 创建一个 extent 时，client 向Stream Master 发送消息，Stream Master 分配好一个 replica set，并返回给 client，于是 client 就知道接下来如何读写这个 extent 了（通过 Primary )：
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fbeb640bd-6356-4734-9cb6-4312781734c4%2FUntitled.png?table=block&id=c211d848-dc50-4ea8-a70a-4dfcff06e252&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fbeb640bd-6356-4734-9cb6-4312781734c4%2FUntitled.png?table=block&id=c211d848-dc50-4ea8-a70a-4dfcff06e252&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 client 只负责将数据写入 Primary ，由 Primary 将数据同步复制到2个 Secondary 节点，然后再响应 client 写入成功。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fa176e147-ba5b-47cd-8bdb-349516281b42%2FUntitled.png?table=block&id=5edbf99d-5620-44d6-9ba7-e504884dea63&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fa176e147-ba5b-47cd-8bdb-349516281b42%2FUntitled.png?table=block&id=5edbf99d-5620-44d6-9ba7-e504884dea63&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 （注：写入是3副本的，在后台，会再通过 EC，把原始数据按 EC 重新写入，以减少存储成本。但这样带来的写放大比较大，因而在盘古2.0里，已经不再采用这种方式，而是 client 侧直接以 EC 方式写入。）
 
@@ -140,11 +140,11 @@ PartitionName, and ObjectName. These properties provide the indexing and sort or
 
 由于每个 table 可能会非常巨大，因此，Partition Layer 把每个 table，按 index 分拆成一个个的 RangePartition，并把RangePartition分配给指定的 PS。 如果RangePartition 过大或过小，过冷或过热，PM 还会负责整合（merge）或分拆（split）RangePartition。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fd44d5c69-c46b-4c3a-9434-30426ee0f820%2FUntitled.png?table=block&id=88781af1-5e9d-47b1-a320-dd18e88241fc&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fd44d5c69-c46b-4c3a-9434-30426ee0f820%2FUntitled.png?table=block&id=88781af1-5e9d-47b1-a320-dd18e88241fc&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 在数据组织上，每个 RangePartition 都可以被当成一个 LSM tree（比例适配底层的 append-only 语义）：
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fa7242abe-3731-4300-8647-d6c1b2eb2299%2FUntitled.png?table=block&id=c3fef447-f374-4426-90ae-326970717a6a&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fa7242abe-3731-4300-8647-d6c1b2eb2299%2FUntitled.png?table=block&id=c3fef447-f374-4426-90ae-326970717a6a&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 # 思考&启发
 

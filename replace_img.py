@@ -33,7 +33,7 @@ def get_notion_content(url: str) -> str:
 def get_notion_image_url(notion_content: str) -> List[str]:
     pattern = r'src="(/image/https.*?spaceId=.*?)"'
     matches = re.findall(pattern, notion_content)
-    web_site = "https://ahan-ai.notion.site"
+    web_site = "https://ahan-io.notion.site"
 
     image_url_list = []
     for match in matches:

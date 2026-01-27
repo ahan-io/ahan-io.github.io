@@ -39,7 +39,7 @@ invalidated (or until the end of the trace)
 
 基于以上3个observations推断出，当前**temperature-based** (eg. 访问频率) data placement 方法无法有效将拥有相似 BITs 的blocks聚集在一起，因此WA无法有效缓解。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F4f2ded50-1a7f-4397-ab08-c85d788d9526%2FUntitled.png?table=block&id=e03147fa-666b-4b79-affb-549bc21cd73e&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=800&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F4f2ded50-1a7f-4397-ab08-c85d788d9526%2FUntitled.png?table=block&id=e03147fa-666b-4b79-affb-549bc21cd73e&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=800&userId=&cache=v2)
 
 首先，由于用户写入的数据块，和GC写入的数据块，其寿命有明显的不同，作者将两种数据块做了显式的分流。用户写入的数据块，又细分为2个类型。
 
@@ -47,7 +47,7 @@ invalidated (or until the end of the trace)
 
 **SepBIT，Sep = Separate，意思就是本质上是根据block 的 BIT 的推断（因为不可能准确预估 BIT）来将 block separate 到不同的 segment 上**。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F7b106a71-1ef7-45c0-9fe6-b5dc412e37f3%2FUntitled.png?table=block&id=b78cdc8c-8496-4186-a72d-00bf07c51ccd&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F7b106a71-1ef7-45c0-9fe6-b5dc412e37f3%2FUntitled.png?table=block&id=b78cdc8c-8496-4186-a72d-00bf07c51ccd&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 如上图所示：
 
@@ -58,11 +58,11 @@ invalidated (or until the end of the trace)
     - 类型3：当类型1的  segment 发生 GC 时，其有效数据被写入类型3
     - 类型4~类型6：来自类型2~6的数据
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fe828c36f-3230-4f23-9c36-10cccb802610%2FUntitled.png?table=block&id=e9b042c6-85a4-4328-a8f0-0b81fc0651ed&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fe828c36f-3230-4f23-9c36-10cccb802610%2FUntitled.png?table=block&id=e9b042c6-85a4-4328-a8f0-0b81fc0651ed&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 那如何来判断一个用户写入的数据，将会是短期(short-lived) block 呢？如上图所示，通过数据分析，作者发现，如果一个 block 在无效时，其 lifespan 很短，那么新写入的 block，其 lifespan 通常也很短。并且基于阿里云上观察到的数据集，发现这个结论很大程度上是正确的。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F0138bcc9-313d-48cf-ba92-4a1081e18f68%2FUntitled.png?table=block&id=25840e1b-649c-4235-873f-cf18fb5702de&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1150&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F0138bcc9-313d-48cf-ba92-4a1081e18f68%2FUntitled.png?table=block&id=25840e1b-649c-4235-873f-cf18fb5702de&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1150&userId=&cache=v2)
 
 对于 GC-rewritten Block，类似的，作者认为，block 将会继续存活的时间（Residual lifespan）大概率等同于已经存在的时间（age）。基于这个结论，作者将被 GC 写入的 block，按其 age 再次分为4个档次，分别写入4种不同的 segment中。
 
@@ -70,8 +70,8 @@ invalidated (or until the end of the trace)
 
 实验上，作者采用的是仿真实验，并没有在阿里云的实际场景中落地。从仿真实验看来，SepBIT 在减少写放大上的效果几乎是最好的。
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F504dd55c-2de2-4f71-89ff-546d2f0b1a60%2FUntitled.png?table=block&id=5ffa570f-fbed-4f56-a25a-d5f011680ebe&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2F504dd55c-2de2-4f71-89ff-546d2f0b1a60%2FUntitled.png?table=block&id=5ffa570f-fbed-4f56-a25a-d5f011680ebe&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=2000&userId=&cache=v2)
 
 在吞吐量上，也是最好的：
 
-![Untitled](https://ahan-ai.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fa1c75ca0-3301-495b-8348-e0e57caef584%2FUntitled.png?table=block&id=754926e6-a341-42ef-be42-f3a5e7955e69&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1420&userId=&cache=v2)
+![Untitled](https://ahan-io.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3841c813-6aff-406c-8c94-6fa3c0018b15%2Fa1c75ca0-3301-495b-8348-e0e57caef584%2FUntitled.png?table=block&id=754926e6-a341-42ef-be42-f3a5e7955e69&spaceId=3841c813-6aff-406c-8c94-6fa3c0018b15&width=1420&userId=&cache=v2)
